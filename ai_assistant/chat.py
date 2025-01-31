@@ -2,6 +2,7 @@ import os
 import signal
 import sys
 
+from langchain_core.messages import AIMessageChunk, AIMessage
 from ai_assistant.graph import graph
 
 
@@ -18,11 +19,12 @@ def stream_graph_updates(user_input: str):
     config,
     stream_mode="messages"):
       if isinstance(event, tuple):
-        message = event[0].content
-        print(message, end="", flush=True)
+        if isinstance(event[0], AIMessageChunk):
+          message = event[0].content
+          print(message, end="", flush=True)
   print()
 
-def chat_loop_langgraph():
+def chat_loop():
 
   signal.signal(signal.SIGINT, signal_handler)
 
