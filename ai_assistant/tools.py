@@ -42,7 +42,7 @@ def get_directory_tree(path: str, ignore_dirs: Optional[List[str]] = None) -> st
         str: Estrutura do diretório no formato JSON (string).
         
     Example:
-        get_directory_tree("./my_project", ["test_dir", "temp_dir"])
+        get_directory_tree("/home/thielson/my_project", ["test_dir", "temp_dir"])
     """
     # Lista padrão de diretórios/arquivos a serem ignorados
 
@@ -68,7 +68,7 @@ def get_directory_tree(path: str, ignore_dirs: Optional[List[str]] = None) -> st
         ignore_dirs = set(ignore_dirs)  # Remove duplicatas
     
     # Função interna para construir a árvore
-    def build_tree(current_path: str) -> dict:
+    def build_tree(current_path: str) -> str:
         """
         Constrói recursivamente a árvore de diretórios e arquivos em um formato estruturado.
 
